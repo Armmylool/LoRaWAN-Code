@@ -64,13 +64,16 @@ void loop() {
   } else {
     Serial.println("Send FAILED");
   }
-  for (int i = 0 ; i < sizeof(appDataGPS) ; i ++) {
+  for (int i = 0 ; i < 11 ; i ++) {
     appDataGPS[i] = 0 ;
   }
   lowPowerSleep(5000) ;
 }
 
 void GPSRead() {
+  latitude = 0 ;
+  longitude = 0 ;
+  speed = 0 ;
   while (gps.available(gpsPort)) {
     DEBUG_PORT.println("AVAILABLE") ;
     fix = gps.read();
